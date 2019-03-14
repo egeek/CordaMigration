@@ -1,7 +1,8 @@
 buildscript {
     ext {
-        corda_group = 'net.corda'
-        corda_release_version = '3.3-corda'
+        corda_group = 'com.r3.corda'
+        corda_release_version = '3.2'
+//        corda_release_version = '4.0-RC04'
         corda_gradle_plugins_version = '4.0.39'
 //        corda_gradle_plugins_version = '3.2.1'
         kotlin_version = '1.2.71'
@@ -12,6 +13,20 @@ buildscript {
             jcenter()
             mavenCentral()
             maven { url 'https://ci-artifactory.corda.r3cev.com/artifactory/corda-releases' }
+            maven {
+                url 'https://nexus.b3i.io/repository/maven-public'
+                credentials {
+                    username = nexusUser
+                    password = nexusPassword
+                }
+            }
+            maven {
+                url 'https://nexus.b3i.io/repository/r3-local'
+                credentials {
+                    username = nexusUserR3
+                    password = nexusPasswordR3
+                }
+            }
         }
     }
     dependencies {
